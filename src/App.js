@@ -4,6 +4,7 @@ import {BrowserRouter, Router, Routes, Route} from 'react-router-dom';
 import Navbar from './Navbar/Navbar.js';
 import Mainpage from './Mainpage/Mainpage';
 import Boardlist from './Boardlist/Boardlist'
+import Board from './Borad/Board'
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element = { <Boardlist />} />
+          <Route path="/board/:board_id" element = { <Board /> } />
         </Routes>
       </div>
     </BrowserRouter>

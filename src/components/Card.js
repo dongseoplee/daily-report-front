@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import "./Card.scss"
 
-const Card = ({board_id, title, content, img_url, username, date}) => {
+const Card = ({board_id, title, content, img_url, username, date}) => { 
     const navigate = useNavigate();
     return (
         <div className="card-wrapper" onClick={() => {navigate(`/board/${board_id}`)}}>
