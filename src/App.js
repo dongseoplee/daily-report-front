@@ -3,16 +3,18 @@ import axios from 'axios';
 import {BrowserRouter, Router, Routes, Route} from 'react-router-dom';
 import Navbar from './Navbar/Navbar.js';
 import Mainpage from './Mainpage/Mainpage';
-import Boardlist from './Boardlist/Boardlist'
-import Board from './Borad/Board'
+import Boardlist from './Boardlist/Boardlist';
+import Board from './Borad/Board';
+import WriteBoard from './WriteBoard/WriteBoard';
 function App() {
   return (
     <BrowserRouter>
       <div className='App'>
         <Navbar />
         <Routes>
-          <Route path='/' element = { <Boardlist />} />
+          <Route path="/" element = { <Boardlist />} />
           <Route path="/board/:board_id" element = { <Board /> } />
+          <Route path="/write" element = { <WriteBoard /> } />
         </Routes>
       </div>
     </BrowserRouter>
