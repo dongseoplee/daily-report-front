@@ -47,7 +47,8 @@ const Board = () => {
         <hr/>
           <div className="board-body">
             <div className="board-image">
-              <img src={"https://source.unsplash.com/random/300x300/?korea"}/>
+              {/* <img src={"https://source.unsplash.com/random/300x300/?korea"}/> */}
+              <img src={boardData.image} width={300} height={300}/>
           </div>
           <div className="board-title-content">
             <div className="board-title">{boardData.title}</div>

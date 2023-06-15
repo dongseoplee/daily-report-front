@@ -61,7 +61,9 @@ const BoardList = () => {
                 <Card key={item.id} username={item.username} //key={item.id} 꼭 넘겨줘야함
                     date={item.yyyymmdd}
                     title={item.title} content={item.content}
-                    board_id={item.id} img_url={"https://source.unsplash.com/random/300x300/?korea"}
+                    board_id={item.id} 
+                    image={item.image}
+                    img_url={item.img_url}
                 />
             ))}
         </div>
