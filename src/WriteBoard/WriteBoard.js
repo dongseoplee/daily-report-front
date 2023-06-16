@@ -27,7 +27,7 @@ const WriteBoard = () => {
                 },
             });
             console.log("api post success");
-            // navigate("/");
+            navigate("/");
         } catch (error) {
             console.log("api post fail");
 
@@ -38,7 +38,13 @@ const WriteBoard = () => {
     return (
         <div className="addBoard-wrapper">
         <div className="addBoard-header">
-            게시물 등록하기 🖊️
+            {/* 게시물 등록하기 🖊️ */}
+        </div>
+       
+        <div className="addBoard-body">
+            {/* <ImageUploader setImage={setImage} preview_URL={image.preview_URL}/> */}
+            <ImageUploader setImage={setImage}/>
+            <TextArea setTitle={setTitle} setContent={setContent} title={title} content={content}/>
         </div>
         <div className="submitButton">
                 
@@ -58,11 +64,6 @@ const WriteBoard = () => {
                     사진과 내용을 모두 입력하세요😭
                 </Button> */}
                 
-        </div>
-        <div className="addBoard-body">
-            {/* <ImageUploader setImage={setImage} preview_URL={image.preview_URL}/> */}
-            <ImageUploader setImage={setImage}/>
-            <TextArea setTitle={setTitle} setContent={setContent} title={title} content={content}/>
         </div>
         </div>
     );

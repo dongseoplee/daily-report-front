@@ -1,16 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import "./Card.scss";
+import defaultImage from "../images/noimage.png"
 const Card = ({board_id, title, content, img_url, username, date, image}) => { 
     const navigate = useNavigate();
-    const src = image || "../images/noimage.png"
     return (
         <div className="card-wrapper" onClick={() => {navigate(`/board/${board_id}`)}}>
         {/* <div className="card-wrapper"> */}
             
             <div className="card-body-img">
-              {/* <img src={img_url} alt="Card image cap"/> */}
-              <img src={src} alt="Card image cap"/>
+              {
+                image ? (
+                  <img src={image} alt="Image" />
+                ) : (
+                  <img src={defaultImage} alt="noImage" />
+                )}
             </div>
 
             <div className="card-body-text">

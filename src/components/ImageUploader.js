@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Button } from "@mui/material";
+import defaultImage from "../images/noimage.png"
 
 const ImageUploader = ({ setImage }) => {
 
@@ -32,8 +33,13 @@ const ImageUploader = ({ setImage }) => {
                 style={{ display: "none" }} 
                 ref={(refParam) => (inputRef = refParam)}
             />
-            {selectedImage && <img src={selectedImage} width={300} height={300} alt="Selected" />}
+            {selectedImage ? ( <img src={selectedImage} width={300} height={300} alt="Selected" />
+            ) : (
+                <img src={defaultImage} width={600} height={300} alt="noImage" />
+
+            )}
         <div className="uploader-button">
+            <br />
             <Button
             variant="outlined"
             color="primary"

@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import "./Comment.scss";
+import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Comment = ({board_id, username, content, yyyymmdd}) => { //{} 를 싸줘야 함 그래야 {}로 넘어오는 데이터 처리 가능
 
@@ -17,6 +19,7 @@ const Comment = ({board_id, username, content, yyyymmdd}) => { //{} 를 싸줘�
     // }, []);
 
     return (
+        <div className="comments-wrapper">
         <div className="comments-body">
             
             <div className="comments-comment">
@@ -26,6 +29,7 @@ const Comment = ({board_id, username, content, yyyymmdd}) => { //{} 를 싸줘�
             <div className="comment-username">{username}</div>
             <div className="comment-content">{content}</div>
             <hr/>
+        </div>
         </div>
           
            
