@@ -6,6 +6,7 @@ import Mainpage from './Mainpage/Mainpage';
 import Boardlist from './Boardlist/Boardlist';
 import Board from './Borad/Board';
 import WriteBoard from './WriteBoard/WriteBoard';
+import SignUp from './SignUp/SignUp';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element = { <Boardlist />} />
           <Route path="/board/:board_id" element = { <Board /> } />
           <Route path="/write" element = { <WriteBoard /> } />
+          <Route path="/signin" element = { <SignUp /> }  />
         </Routes>
       </div>
     </BrowserRouter>
