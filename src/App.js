@@ -7,9 +7,10 @@ import Boardlist from './Boardlist/Boardlist';
 import Board from './Borad/Board';
 import WriteBoard from './WriteBoard/WriteBoard';
 import SignUp from './SignUp/SignUp';
+import Login from './Login/Login';
 function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <div className='App'>
         <Navbar />
         <Routes>
@@ -17,9 +18,10 @@ function App() {
           <Route path="/board/:board_id" element = { <Board /> } />
           <Route path="/write" element = { <WriteBoard /> } />
           <Route path="/signin" element = { <SignUp /> }  />
+          <Route path="/login" element = { <Login /> } />
         </Routes>
       </div>
-    </BrowserRouter>
+    // </BrowserRouter>
   );
 }
 // document.getElementById('postForm').addEventListener('submit', function(event) {
