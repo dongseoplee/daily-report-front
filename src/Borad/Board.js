@@ -43,7 +43,7 @@ const Board = () => {
     return (
         <React.Fragment>
         <div className="board-header">
-            <div className="board-header-username">{boardData.username}</div>
+            <div className="board-header-username">{boardData.email}</div>
             <div className="board-header-date">{boardData.yyyymmdd}</div>
         </div>
         <hr/>
@@ -51,7 +51,7 @@ const Board = () => {
             <div className="board-image">
               {/* <img src={"https://source.unsplash.com/random/300x300/?korea"}/> */}
               {
-                boardData.image ? (
+                boardData.image != "null" ? (
                   <img src={boardData.image} width={600} height={300} />
                 ) : (
                   <img src={defaultImage} width={600} height={350} />
@@ -75,6 +75,7 @@ const Board = () => {
                 username={item.username}
                 yyyymmdd={item.yyyymmdd}
                 content={item.content}
+                email={item.email}
               />
 
             ))}

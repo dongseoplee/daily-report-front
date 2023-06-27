@@ -5,6 +5,8 @@ import React, {useEffect, useState} from "react";
 import {Button} from "@mui/material";
 import TextArea from "../components/Textarea";
 import ImageUploader from "../components/ImageUploader";
+import { jwtUtils } from "../Utils/jwtUtils";
+import { useSelector } from "react-redux";
 
 const WriteBoard = () => {
     const navigate = useNavigate();
@@ -12,12 +14,16 @@ const WriteBoard = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [image, setImage] = useState(null);
+    const token = useSelector(state => state.Auth.token);
+    const email = jwtUtils.getId(token);
+
     const handleSubmit = useCallback(async () => {
         try {
             const formData = new FormData(); //FromData() 를 formData() 로 적은 실수를 함
             formData.append("title", title);
             formData.append("content", content);
             formData.append("image", image);
+            formData.append("email", email);
             console.log("image123123", image);
             console.log("form data", formData);
 

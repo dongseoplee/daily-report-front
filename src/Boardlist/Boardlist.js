@@ -64,6 +64,7 @@ const BoardList = () => {
                     board_id={item.id} 
                     image={item.image}
                     img_url={item.img_url}
+                    email={item.email}
                 />
             ))}
         </div>

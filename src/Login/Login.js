@@ -7,8 +7,8 @@ import {Button, TextField} from "@mui/material";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { setToken } from "../redux/reducers/AuthReducer";
-import jwt_decode from "jwt-decode";
 import "../SignUp/SignUp.scss";
+import "../Utils/jwtUtils"
 import jwtDecode from "jwt-decode";
 
 const Login = () => {
@@ -27,7 +27,7 @@ const Login = () => {
     console.log(values.email)
     console.log(values.password)
 
-    const {email, password} = values;
+    // const {email, password} = values;
     const formData = new FormData();
     formData.append("email", values.email);
     formData.append("password", values.password);
@@ -35,26 +35,27 @@ const Login = () => {
     try {
       const response = await axios.post("http://localhost:8080/login", formData);
       //백엔드에서 생성한 토큰을 받는다.
-      // dispatch(setToken(response.jwt));
-      const jwt = response.data;
-      const decodedToken = jwtDecode(jwt)
-      // console.log("decodedToken", decodedToken)
-
+      console.log("response data", response.data)
+      const jwt = response.data
+      // const decodedToken = jwtDecode(jwt);
+      // console.log(decodedToken.sub); // 해독해서 email값 알아냄
+      dispatch(setToken(jwt))
       
-      // const redirectUrl = searchParams.get("redirectUrl");
-      // toast.success(<h3>로그인 성공😎</h3>, {
-      //   position: "top-center",
-      //   autoClose: 2000
-      // });
+      const redirectUrl = searchParams.get("redirectUrl");
+      toast.success(<h3>로그인 성공😎</h3>, {
+        position: "top-center",
+        autoClose: 2000
+      });
       // redirectUrl이 쿼리스트링으로 존재하면
       // 원래가고자 했던 페이지로 돌아가기
-      // setTimeout(()=> {
-      //   if (redirectUrl) {
-      //     navigate(redirectUrl);
-      //   } else {
-      //     navigate("/");
-      //   }
-      // }, 2000);
+      setTimeout(()=> {
+        if (redirectUrl) {
+          navigate(redirectUrl);
+        } else {
+          navigate("/");
+        }
+      }, 2000);
+
 
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력

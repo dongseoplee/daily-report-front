@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import "./Card.scss";
 import defaultImage from "../images/noimage.png"
-const Card = ({board_id, title, content, img_url, username, date, image}) => { 
+const Card = ({board_id, title, content, img_url, username, date, image, email}) => { 
     const navigate = useNavigate();
     return (
         <div className="card-wrapper" onClick={() => {navigate(`/board/${board_id}`)}}>
@@ -10,7 +10,7 @@ const Card = ({board_id, title, content, img_url, username, date, image}) => {
             
             <div className="card-body-img">
               {
-                image ? (
+                image != "null" ? (
                   <img src={image} alt="Image" />
                 ) : (
                   <img src={defaultImage} alt="noImage" />
@@ -23,7 +23,7 @@ const Card = ({board_id, title, content, img_url, username, date, image}) => {
             </div>
 
             <div className="card-footer">
-              <div className="username">{username}</div>
+              <div className="username">{email}</div>
               <div className="date">{date}</div>
             </div>
 

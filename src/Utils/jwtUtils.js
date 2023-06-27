@@ -16,7 +16,7 @@ export class jwtUtils {
   // 토큰에서 유저 id 가져오기
   static getId(token) {
     const decoded = jwtDecode(token)
-    return decoded.jti;
+    return decoded.sub;
   }
 
 }
