@@ -4,14 +4,19 @@ import {Button} from "@mui/material";
 import { TextField } from "@mui/material";
 import axios from "axios";
 import './CommentInput.scss';
+import { useSelector } from "react-redux";
+import { jwtUtils } from "../Utils/jwtUtils";
 const CommentInput = ({board_id}) => {
 
     const [newContent, setNewContent] = useState("");
+    const token = useSelector(state => state.Auth.token);
+    const email = jwtUtils.getId(token);
 
     const submit = useCallback(async () => {
         const formData = new FormData();
         formData.append("board_id", board_id);
         formData.append("content", newContent);
+        formData.append("email", email);
         
         console.log("comment", formData)
         await axios.post("http://localhost:8080/board/comment", formData, {

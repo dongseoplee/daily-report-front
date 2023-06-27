@@ -4,7 +4,7 @@ import "./Comment.scss";
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 
-const Comment = ({board_id, username, content, yyyymmdd}) => { //{} 를 싸줘야 함 그래야 {}로 넘어오는 데이터 처리 가능
+const Comment = ({board_id, username, content, yyyymmdd, email}) => { //{} 를 싸줘야 함 그래야 {}로 넘어오는 데이터 처리 가능
 
     // const [commentData, setCommentData] = useState([]);
     // // const [commentList, setCommentList] = useState([]);
@@ -26,7 +26,7 @@ const Comment = ({board_id, username, content, yyyymmdd}) => { //{} 를 싸줘�
                 <div className="comment-username-date"></div>
                 <div className="comment-date">{yyyymmdd}</div>
             </div>
-            <div className="comment-username">{username}</div>
+            <div className="comment-username">{email}</div>
             <div className="comment-content">{content}</div>
             <hr/>
         </div>
