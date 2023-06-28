@@ -13,6 +13,8 @@ const allReducers = combineReducers({
   Auth: AuthReducer
 });
 
+
+
 const store = createStore(persistReducer(persistConfig, allReducers),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
