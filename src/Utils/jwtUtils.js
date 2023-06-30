@@ -13,12 +13,10 @@ export class jwtUtils {
       return false;
     }
   }
-  // 토큰에서 유저 id 가져오기
+  // 토큰에서 유저 id 가져오기 id는 email 형식이다.
   static getId(token) {
     const decoded = jwtDecode(token)
     return decoded.sub;
   }
-
-
 
 }
