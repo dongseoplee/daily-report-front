@@ -14,11 +14,14 @@ const BoardList = () => {
         const fetchData = async() => {
             try {
                 // const page_number = searchParams.get("page") //searchParams.get("page") page란 변수 값을 어디서 가져오는지...
-                const page_number = 1
+                const page_number = 0
                 console.log("page_number", page_number)
-                const response = await axios.get(`http://localhost:8080/board/pagination?page=${page_number}&pageSize=${pageSize}`)
-                setBoardData(response.data)
-                console.log("response data", response.data)
+                const response = await axios.get(`http://localhost:8080/board/pagination?page=${page_number}&size=${pageSize}`)
+                // const response = await axios.get(`http://localhost:8080/board/pagination`)
+                console.log("response", response.data.content)
+
+                setBoardData(response.data.content)
+                console.log("response data content", response.data.content)
 
             } catch (error) {
                 console.log('axios Error', error)
@@ -36,14 +39,12 @@ const BoardList = () => {
         getTotalBoard();
         console.log("totalPage", pageCount)
 
-       
-
     }, []);
 
     const handlePageChange = async (e, value) => { //pagination component에서 화살표나 버튼에 따라 value값을 넘겨줌
         try {
-            const response = await axios.get(`http://localhost:8080/board/pagination?page=${value}&pageSize=${pageSize}`);
-            setBoardData(response.data);
+            const response = await axios.get(`http://localhost:8080/board/pagination?page=${value - 1}&size=${pageSize}`); //jpa의 page는 0부터 시작
+            setBoardData(response.data.content);
         } catch (error) {
             console.log('axios Error', error);
         }
