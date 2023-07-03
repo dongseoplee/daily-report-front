@@ -96,7 +96,7 @@ const Board = () => {
           </div>
           <div>
             {commentData.map((item) => (
-              <Comment key={item.id} 
+              <Comment id={item.id} 
                 board_id={item.board_id}
                 username={item.username}
                 yyyymmdd={item.yyyymmdd}
