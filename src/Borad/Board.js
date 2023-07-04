@@ -8,6 +8,7 @@ import defaultImage from "../images/noimage.png"
 import { jwtUtils } from "../Utils/jwtUtils";
 import {Button, Dialog, DialogContent, IconButton} from "@mui/material";
 import {useSelector} from "react-redux";
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 
 
 const Board = () => {
@@ -63,6 +64,15 @@ const Board = () => {
                 onClick={() => setShow(true)} // show 상태 변수를 true로 업데이트
               >
                 삭제
+              </Button>
+              <Button
+                variant="outlined" endIcon={<BuildOutlinedIcon/>}
+                onClick={() => {
+                  console.log("수정 버튼 클릭")
+                  navigate(`/edit-board/${board_id}`)
+                }}
+              >
+                수정
               </Button>
               </div>
             </div>
