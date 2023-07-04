@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import {BrowserRouter, Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Router, Routes, Route, useLocation} from 'react-router-dom';
 import Navbar from './Navbar/Navbar.js';
 import Mainpage from './Mainpage/Mainpage';
 import Boardlist from './Boardlist/Boardlist';
@@ -8,7 +8,10 @@ import Board from './Borad/Board';
 import WriteBoard from './WriteBoard/WriteBoard';
 import SignUp from './SignUp/SignUp';
 import Login from './Login/Login';
+import EditBoard from './EditBoard/EditBoard';
+
 function App() {
+  const location = useLocation();
   return (
     // <BrowserRouter>
       <div className='App'>
@@ -19,6 +22,7 @@ function App() {
           <Route path="/write" element = { <WriteBoard /> } />
           <Route path="/signin" element = { <SignUp /> }  />
           <Route path="/login" element = { <Login /> } />
+          <Route path="/edit-board/:board_id" element = { <EditBoard /> } />
         </Routes>
       </div>
     // </BrowserRouter>

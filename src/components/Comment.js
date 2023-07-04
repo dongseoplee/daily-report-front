@@ -6,6 +6,7 @@ import { TextField, Dialog, DialogContent } from "@mui/material";
 import {useSelector} from "react-redux";
 import { jwtUtils } from "../Utils/jwtUtils";
 import { useNavigate, useParams } from "react-router-dom";
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 
 
 
@@ -39,9 +40,10 @@ const Comment = ({id, board_id, username, content, yyyymmdd, email}) => { //{} �
                 <div className="comment-username-date"></div>
                 <div className="comment-date">{yyyymmdd}</div>
             </div>
-            <div className="delete-button">
+            <div className="delete-edit-button">
                 {
                     jwtUtils.isAuth(token) && jwtUtils.getId(token) === email &&
+                    <div>
                     <Button
                     variant="outlined"
                     color="error"
@@ -51,6 +53,19 @@ const Comment = ({id, board_id, username, content, yyyymmdd, email}) => { //{} �
                     >
                     삭제
                     </Button>
+
+                    <Button
+                    variant="outlined" endIcon={<BuildOutlinedIcon/>}
+                    onClick={() => {
+                      console.log("수정 버튼 클릭")
+                      // navigate(`/edit-board/${board_id}`)
+                    }}
+                  >
+                    수정
+                  </Button>
+                  </div>
+                    
+                    
                 }
                 
             </div>
