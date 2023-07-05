@@ -25,7 +25,20 @@ const Comment = ({id, board_id, username, content, yyyymmdd, email}) => { //{} �
     // }, []);
     const token = useSelector(state => state.Auth.token);
     const [show, setShow] = useState(false);
+    const [commentShow, setCommentShow] = useState(false);
+    const [newContent, setNewContent] = useState("");
+
     const navigate = useNavigate();
+    const edit = useCallback(async () => {
+      const formData = new FormData();
+      formData.append("board_id", board_id);
+      formData.append("content", newContent);
+      formData.append("email", email);
+      console.log("formdata", formData);
+      await axios.put(`http://localhost:8080/edit-comment/${id}`, formData);
+      window.location.reload();
+
+    }, [board_id, newContent]);
 
 
 
@@ -58,6 +71,7 @@ const Comment = ({id, board_id, username, content, yyyymmdd, email}) => { //{} �
                     variant="outlined" endIcon={<BuildOutlinedIcon/>}
                     onClick={() => {
                       console.log("수정 버튼 클릭")
+                      setCommentShow(true)
                       // navigate(`/edit-board/${board_id}`)
                     }}
                   >
@@ -118,6 +132,49 @@ const Comment = ({id, board_id, username, content, yyyymmdd, email}) => { //{} �
                 </Dialog>
 
             )
+        }
+        {
+          //댓글 수정 모달 창
+          commentShow && (
+            <Dialog open={true}>
+                <DialogContent style={{ width: "4000px", minHeight: "200px" }}>
+                <div>
+                <div className="modal-title">수정하시겠습니까?</div>
+                <div className="CommentInput-header">
+                <TextField
+                className="CommentInput-header-textarea"
+                maxRows={3}
+                onChange={(e) => {
+                    setNewContent(e.target.value)
+                }}
+                multiline placeholder="댓글을 입력해주세요"
+                />
+                {newContent !== "" ? (
+                <Button variant="outlined" onClick={edit}>등록하기</Button>
+                // <Button variant="outlined" >등록하기</Button>
+                ) : (
+                <Button variant="outlined" disabled={true}>
+                    등록하기
+                </Button>
+                )}
+              </div>
+                
+                <Button
+                  variant="outlined"
+                  color="error"
+                  onClick={async () => {
+                    setCommentShow(false);
+                  }}
+                
+                >
+                아니오
+                </Button>
+                </div>
+                <div className="modal-button">
+                </div>
+                </DialogContent>
+                </Dialog>
+          )
         }
         
         </React.Fragment>
