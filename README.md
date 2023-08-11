@@ -2,6 +2,11 @@
 
 일일 보고서 작성 페이지로 게시글에 사진을 첨부하여 글을 작성할 수 있으며 다른 사용자가 남긴 댓글을 확인할 수 있습니다.
 
+
+# Wiki
+
+* https://github.com/dongseoplee/daily-report-front/wiki
+
 # How to use
 
 ## Log in
@@ -37,8 +42,7 @@
 
 * 현재 로그인한 유저의 댓글이라면 수정 및 삭제를 할 수 있습니다.
 
-# Wiki
-* https://github.com/dongseoplee/daily-report-front/wiki
+
 
 # Tech Stack
 * React.js
