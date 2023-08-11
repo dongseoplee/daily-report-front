@@ -43,6 +43,13 @@
 * 현재 로그인한 유저의 댓글이라면 수정 및 삭제를 할 수 있습니다.
 
 
+# Installing and Running
+
+* git clone https://github.com/dongseoplee/daily-report-front.git
+
+* npm start
+
+* Open [http://localhost:3000](http://localhost:3000/) to view it in your browser.
 
 # Tech Stack
 * React.js
